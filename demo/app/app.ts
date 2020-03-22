@@ -1,3 +1,3 @@
-﻿import * as app from 'tns-core-modules/application';
-app.run({ moduleName: 'app-root' });
-
+﻿import * as application from 'tns-core-modules/application';
+console.log('start main-page');
+application.run({ moduleName: 'main-page' });

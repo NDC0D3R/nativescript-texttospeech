@@ -1,7 +1,7 @@
-import { SpeakOptions, TNSTextToSpeech } from 'nativescript-texttospeech';
+import { Page } from 'tns-core-modules/ui/page';
 import { Observable } from 'tns-core-modules/data/observable';
 import { isIOS } from 'tns-core-modules/platform';
-import { Page } from 'tns-core-modules/ui/page';
+import { TNSTextToSpeech, SpeakOptions } from 'nativescript-texttospeech';
 
 export class HelloWorldModel extends Observable {
   public speakText: string;
@@ -9,6 +9,8 @@ export class HelloWorldModel extends Observable {
 
   constructor(mainPage: Page) {
     super();
+    console.log('start super');
+
     this.speakText =
       'Hello and welcome to Native Script. Hope you enjoy the power.';
     this._SpeechSynthesizer = new TNSTextToSpeech() as TNSTextToSpeech;
@@ -16,23 +18,21 @@ export class HelloWorldModel extends Observable {
   }
 
   public speakThis() {
-    if (!this._SpeechSynthesizer) {
-      this._SpeechSynthesizer = new TNSTextToSpeech() as TNSTextToSpeech;
-    }
+    console.log('start speakThis');
 
+    alert("Tapped " + 'speakThis' + " times!");
     const opts: SpeakOptions = {
       text: this.get('speakText'),
-      speakRate: isIOS ? 0.45 : null,
+      speakRate: isIOS ? 0.45 : 0.45,
       finishedCallback: () => {
         alert('Finished Speaking :)');
       }
     };
-
+    console.log('opts', opts);
     this._SpeechSynthesizer.speak(opts);
   }
 
-  public byebyeSynthesizer() {
-    this._SpeechSynthesizer.pause();
+  public byebyeTextToSpeech() {
     this._SpeechSynthesizer.destroy();
     console.log('destroyed');
   }

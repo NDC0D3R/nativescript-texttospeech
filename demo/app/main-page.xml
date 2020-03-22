@@ -1,6 +1,6 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
     <StackLayout>
-        <Button text="Speak This" tap="{{ speakThis }}" class="btn btn-primary" />
+        <Button text="Speak This" tap="{{ speakThis }}" click="{{ speakThis }}" class="btn btn-primary"/>
 
         <StackLayout class="input-field">
             <Label text="Enter text:" class="label"></Label>
